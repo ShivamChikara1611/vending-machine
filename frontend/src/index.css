@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @theme {
-    --color-primary: #be0ee6;
-    --color-secondary: #ce63e6;
-    --color-third: #e8bbf2;
+    --color-primary: #b30707;
+    --color-secondary: #cc3535;
+    --color-third: #fa4b4b;
 
     --grid-cols-auto: repeat(auto-fill, minmax(200px, 1fr));
 

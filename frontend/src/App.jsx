@@ -16,7 +16,7 @@ const App = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url(${assets.main_bg1})`,
+          backgroundImage: `url(${assets.main_bg2})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -26,7 +26,7 @@ const App = () => {
       {/* Main content */}
       <div className="relative z-10 h-full flex flex-col">
         <ToastContainer />
-        <div className='w-full flex flex-col justify-center items-center'>
+        <div className='w-full flex flex-col justify-center items-center backdrop-blur-sm bg-primary/10'>
           <Navbar/>
         </div>
         <Routes>
