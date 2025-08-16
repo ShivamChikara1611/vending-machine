@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+@theme {
+    --color-primary: #be0ee6;
+    --color-secondary: #ce63e6;
+    --color-third: #e8bbf2;
+
+    --grid-cols-auto: repeat(auto-fill, minmax(200px, 1fr));
+
+    @keyframes border-spin {
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+
+    --animate-border-spin: border-spin 7s linear infinite;
+}
+
+* {
+    font-family: 'Outfit';
+}
+
+body {
+    background-color: #000000;
+}
+
+.active hr {
+    @apply block;
+}
+
+::-webkit-scrollbar {
+    @apply w-2 h-0;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+@media (max-width:740px) {
+    .active p {
+        @apply text-gray-200 bg-primary;
+    }
+}
