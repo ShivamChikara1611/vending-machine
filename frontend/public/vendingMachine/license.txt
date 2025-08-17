@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vintage Coca-Cola Vending Machine
+* source:	https://sketchfab.com/3d-models/vintage-coca-cola-vending-machine-eae7e99aebde4ee2a6a6a719cd5c546b
+* author:	WAYNOT (https://sketchfab.com/WAYNOT)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vintage Coca-Cola Vending Machine" (https://sketchfab.com/3d-models/vintage-coca-cola-vending-machine-eae7e99aebde4ee2a6a6a719cd5c546b) by WAYNOT (https://sketchfab.com/WAYNOT) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

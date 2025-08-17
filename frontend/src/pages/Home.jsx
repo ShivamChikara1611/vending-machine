@@ -1,14 +1,32 @@
-import React from 'react'
+import React from "react";
+import { VendingMachineCanvas } from "../canvas";
 
 const Home = () => {
   return (
-    <div className='text-gray-300 mt-8 px-[10%]'>
-      <div className='md:max-w-[1200px] mx-auto'>
-        <h1 className='font-bold text-8xl text-center'>Digitalize your vending experience!</h1>
-        <h3 className='text-end italic mt-4 text-gray-400 font-normal text-2xl'>-Scan, Choose, Pay & Collect in seconds.</h3>
+    <div
+      className="md:max-w-[1200px] mx-auto h-full flex flex-row justify-around items-center pr-[4%]"
+      // style={{
+      //   background: "linear-gradient(200deg, #ccc 0%, #ffe5e5 40%, #ffb3b3 100%)",
+      // }}
+    >
+      {/* 3D Canvas */}
+      <div className="w-full h-full relative z-10">
+        <div className="h-full min-w-fit ">
+          <VendingMachineCanvas />
+        </div>
+      </div>
+
+      {/* Text Content */}
+      <div className="z-20 pointer-events-none text-right">
+        <h1 className="font-bold text-white text-8xl">
+          Digitalize your vending experience!
+        </h1>
+        <h3 className="italic mt-5 text-gray-200 font-normal text-xl">
+          -Scan, Choose, Pay & Collect in seconds.
+        </h3>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
