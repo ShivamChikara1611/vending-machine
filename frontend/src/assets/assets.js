@@ -7,6 +7,7 @@ import main_bg6 from './main_bg6.jpg';
 import logo from './logo.png';
 import menu from './menu.png';
 import close from './close.png';
+import scan from './scan.png';
 
 export const assets = {
     main_bg1,
@@ -17,5 +18,6 @@ export const assets = {
     main_bg6,
     logo,
     menu,
-    close
+    close,
+    scan
 };
