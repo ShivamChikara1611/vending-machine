@@ -7,11 +7,11 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className='flex items-center justify-between px-[5%] md:px-0 md:justify-evenly text-sm py-2 text-gray-200 w-full max-w-[1800px]'>
+    <div className='fixed top-0 left-1/2 -translate-x-1/2 w-full z-30 flex items-center justify-between px-[5%] md:px-0 md:justify-around text-sm py-2 text-primary md:rounded-full md:my-3 md:w-fit md:min-w-[1200px] backdrop-blur-sm bg-white/20 shadow-lg'>
       <img
         onClick={() => navigate('/')}
         className='h-[50px] w-[50px] rounded-full cursor-pointer'
-        src={assets.logo} // <-- Set your logo path here
+        src={assets.logo}
         alt='nav-logo'
       />
       <ul className='hidden md:flex items-start gap-5 font-medium'>

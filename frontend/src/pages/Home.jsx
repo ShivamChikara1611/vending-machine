@@ -5,9 +5,6 @@ const Home = () => {
   return (
     <div
       className="md:max-w-[1200px] mx-auto h-full flex flex-row justify-around items-center pr-[4%]"
-      // style={{
-      //   background: "linear-gradient(200deg, #ccc 0%, #ffe5e5 40%, #ffb3b3 100%)",
-      // }}
     >
       {/* 3D Canvas */}
       <div className="w-full h-full relative z-10">

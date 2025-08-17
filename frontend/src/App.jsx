@@ -16,19 +16,17 @@ const App = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url(${assets.main_bg2})`,
+          backgroundImage: `url(${assets.main_bg6})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          opacity: 0.4,
+          opacity: 0.6,
         }}
       />
       {/* Main content */}
-      <div className="relative z-10 h-full flex flex-col">
+      <div className="relative z-10 h-full flex flex-col pt-20"> {/* pt-20 = 80px */}
         <ToastContainer />
-        <div className='w-full flex flex-col justify-center items-center backdrop-blur-sm bg-primary/10'>
-          <Navbar/>
-        </div>
+        <Navbar /> {/* Place Navbar outside the padding if you want it to be global */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
