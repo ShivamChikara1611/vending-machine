@@ -7,7 +7,7 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className='fixed top-0 left-1/2 -translate-x-1/2 w-full z-30 flex items-center justify-between px-[5%] md:px-0 md:justify-around text-sm py-2 text-primary md:rounded-full md:my-3 md:w-fit md:min-w-[1200px] backdrop-blur-sm bg-white/20 shadow-lg'>
+    <div className='fixed top-0 left-1/2 -translate-x-1/2 w-full z-30 flex items-center justify-between px-[5%] md:px-0 md:justify-around text-sm py-2 text-primary md:rounded-full md:my-3 md:w-fit md:min-w-[800px] backdrop-blur-sm bg-white/20 shadow-lg'>
       <img
         onClick={() => navigate('/')}
         className='h-[50px] w-[50px] rounded-full cursor-pointer'
