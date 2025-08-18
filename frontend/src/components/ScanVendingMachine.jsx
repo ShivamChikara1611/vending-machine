@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import QrCodeScanner from "./QrCodeScanner";
 
 const ScanVendingMachine = () => {
     const [vendingMachineData, setVendingMachineData] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [cart, setCart] = useState([]);
+    const [scannerId, setScannerId] = useState(null); // store scanned id
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const yen = import.meta.env.VITE_CURRENCY || "¥";
-    const scannedId = "VM003";
-    const apiUrl = `${backendUrl}/api/admin/vending-machines/${scannedId}`;
 
     // Fetch vending machine
-    const fetchVendingMachineInfo = async () => {
+    const fetchVendingMachineInfo = async (id) => {
         try {
-            const response = await axios.get(apiUrl);
+            const response = await axios.get(`${backendUrl}/api/admin/vending-machines/${id}`);
             setVendingMachineData(response.data);
         } catch (error) {
             console.error("Error fetching vending machine data:", error);
@@ -24,9 +24,12 @@ const ScanVendingMachine = () => {
         }
     };
 
+    // Trigger fetch when scannerId changes
     useEffect(() => {
-        fetchVendingMachineInfo();
-    }, []);
+        if (scannerId) {
+            fetchVendingMachineInfo(scannerId);
+        }
+    }, [scannerId]);
 
     // Add product to cart and update stock live
     const addToCart = (product) => {
@@ -114,7 +117,7 @@ const ScanVendingMachine = () => {
             );
 
             const payload = {
-                machine_id: scannedId,
+                machine_id: scannerId,
                 location: vendingMachineData.location,
                 products: cart.map((p) => ({
                     product_id: p.product_id,
@@ -123,14 +126,14 @@ const ScanVendingMachine = () => {
                     quantity: p.quantity,
                 })),
                 total_amount: totalAmount,
-                payment_status: "completed", // now triggered when user clicks "Complete"
+                payment_status: "completed", // demo purpose
             };
 
             await axios.post(`${backendUrl}/api/admin/transactions`, payload);
             toast.success("Payment Successful!");
 
             setCart([]);
-            fetchVendingMachineInfo(); // refresh stock from backend
+            fetchVendingMachineInfo(scannerId); // refresh stock
         } catch (error) {
             console.error("Checkout error:", error);
             toast.error("Payment failed!");
@@ -149,14 +152,35 @@ const ScanVendingMachine = () => {
         0
     );
 
-    return vendingMachineData ? (
+    // STEP 1 → Show Scanner if no scannerId yet
+    if (!scannerId) {
+        return (
+            <div className="h-[88.5vh] flex flex-col justify-center items-center">
+                <h1 className="text-3xl text-primary mb-4">Scan the Vending Machine QR</h1>
+                <QrCodeScanner onScan={(id) => setScannerId(id)} />
+            </div>
+        );
+    }
+
+    // STEP 2 → If scanned but still fetching
+    if (!vendingMachineData) {
+        return (
+            <div className="h-[88.5vh] flex flex-col justify-center items-center">
+                <p className="text-primary text-4xl italic">Loading machine data...</p>
+            </div>
+        );
+    }
+
+    // STEP 3 → Show vending machine UI
+    return (
         <div className="flex justify-between">
             {/* Product List */}
             <div className="flex flex-col justify-center items-center text-gray-200 py-8 w-full">
-                <h1 className="text-5xl font-bold text-primary">Scan the QR Code!</h1>
+                <h1 className="text-5xl font-bold text-primary">Welcome!</h1>
+
                 <div className="mt-5 flex flex-col justify-center items-center">
                     <h3 className="text-2xl font-semibold text-gray-200 mb-1">
-                        Welcome to the {vendingMachineData.location}'s Vending Machine
+                        {vendingMachineData.location}'s Vending Machine
                     </h3>
                     <p className="text-gray-300 text-lg italic">
                         Please choose your item below.
@@ -169,8 +193,6 @@ const ScanVendingMachine = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="border border-primary bg-primary bg-opacity-20 rounded px-2 py-1.5 text-gray-300 my-5 w-full md:w-80"
                     />
-
-                    {/* Inner grid container */}
 
                     <div className="max-h-[85vh] overflow-y-scroll">
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 bg-white/50 p-5 rounded-md backdrop-blur-lg scrollbar-hide">
@@ -265,10 +287,6 @@ const ScanVendingMachine = () => {
                     <p className="italic text-gray-600 flex justify-center items-center h-120">Cart is empty</p>
                 )}
             </div>
-        </div>
-    ) : (
-        <div className="h-[88.5vh] flex flex-col justify-center items-center">
-            <p className="text-primary text-4xl italic">Loading!</p>
         </div>
     );
 };
