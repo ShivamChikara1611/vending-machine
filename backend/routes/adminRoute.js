@@ -9,6 +9,7 @@ import {
     deleteProductFromMachine,
     getAllProductsFromMachine
 } from "../controllers/vendingMachineController.js";
+import { createTransaction } from "../controllers/transactionController.js";
 
 const router = express.Router();
 
@@ -23,6 +24,10 @@ router.delete("/vending-machines/:machine_id", deleteVendingMachine);
 router.get("/vending-machines/:machine_id/products", getAllProductsFromMachine);
 router.post("/vending-machines/:machine_id/products", addProductToMachine);
 router.delete("/vending-machines/:machine_id/products/:product_id", deleteProductFromMachine);
+
+// Transaction routes
+router.post("/transactions", createTransaction);
+
 
 export default router;
 
