@@ -1,23 +1,56 @@
 import VendingMachine from '../models/vendingMachineModel.js';
+import QRCode from "qrcode";
+import { v2 as cloudinary } from "cloudinary";
 
 // Create a new vending machine
 export const createVendingMachine = async (req, res) => {
     const { machine_id, location, products } = req.body;
 
     try {
-        const newMachine = new VendingMachine({ machine_id, location, products });
-        // Validate unique machine_id
+        // Check for unique machine_id
         const existingMachine = await VendingMachine.findOne({ machine_id });
         if (existingMachine) {
             return res.status(400).json({ message: "Machine ID already exists" });
         }
-        // Save the new vending machine
+
+        // Generate QR Code (base64 PNG)
+        const qrCodeDataUrl = await QRCode.toDataURL(machine_id);
+
+        // Convert base64 → buffer
+        const base64Data = qrCodeDataUrl.replace(/^data:image\/png;base64,/, "");
+        const buffer = Buffer.from(base64Data, "base64");
+
+        // Upload to Cloudinary
+        const imageUpload = await new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream(
+                { resource_type: "image", folder: "vending-machines" }, // folder in the cloudinary
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                }
+            );
+            stream.end(buffer);
+        });
+
+        // Create new vending machine with QR code URL
+        const newMachine = new VendingMachine({
+            machine_id,
+            location,
+            products,
+            qr_code: imageUpload.secure_url, // save cloudinary QR code url
+        });
+
+        // Save in DB
         await newMachine.save();
+
         res.status(201).json(newMachine);
+
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: "Error creating vending machine", error });
     }
 };
+
 
 // Get all vending machines
 export const getAllVendingMachines = async (req, res) => {
@@ -34,7 +67,7 @@ export const getVendingMachineById = async (req, res) => {
     const { machine_id } = req.params;
 
     try {
-        const machine = await VendingMachine.findOne({machine_id});
+        const machine = await VendingMachine.findOne({ machine_id });
         if (!machine) {
             return res.status(404).json({ message: "Vending machine not found" });
         }
@@ -51,7 +84,7 @@ export const updateVendingMachine = async (req, res) => {
 
     try {
         // Find the vending machine by machine_id
-        const machine = await VendingMachine.findOne({machine_id});
+        const machine = await VendingMachine.findOne({ machine_id });
         if (!machine) {
             return res.status(404).json({ message: "Vending machine not found" });
         }
@@ -90,7 +123,7 @@ export const deleteVendingMachine = async (req, res) => {
     const { machine_id } = req.params;
 
     try {
-        const deletedMachine = await VendingMachine.findOneAndDelete({machine_id});
+        const deletedMachine = await VendingMachine.findOneAndDelete({ machine_id });
         if (!deletedMachine) {
             return res.status(404).json({ message: "Vending machine not found" });
         }

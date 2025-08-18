@@ -8,6 +8,7 @@ const productSchema = new mongoose.Schema({
 });
 
 const vendingMachineSchema = new mongoose.Schema({
+    qr_code: { type: String, required: true },
     machine_id: { type: String, required: true, unique: true, uppercase: true, trim: true },
     location: { type: String, required: true },
     products: [productSchema]
