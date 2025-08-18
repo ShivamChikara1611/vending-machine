@@ -22,7 +22,27 @@
 }
 
 body {
-    background-color: #000000;
+    /* position: relative; */
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url("./assets/main_bg6.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;  
+}
+body::after{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: black;
+    opacity: 0.5;
+    pointer-events: none;  
 }
 
 .active hr {

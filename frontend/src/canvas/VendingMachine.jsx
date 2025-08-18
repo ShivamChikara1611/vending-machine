@@ -14,8 +14,8 @@ export function VendingMachineCanvas(props) {
       groupRef.current.rotation.y += 0.005 * direction;
 
       // Clamp between -75° and +75° (≈ 150° total)
-      if (groupRef.current.rotation.y > Math.PI / 5) direction = -1; 
-      if (groupRef.current.rotation.y < -Math.PI / 5) direction = 1;
+      if (groupRef.current.rotation.y > Math.PI / 8) direction = -1; 
+      if (groupRef.current.rotation.y < -Math.PI / 8) direction = 1;
     }
   });
 
@@ -213,8 +213,8 @@ const CameraAnimation = () => {
   useFrame((state) => {
     const camera = state.camera;
     camera.position.z += 0.005 * direction;
-    if (camera.position.z > 12) direction = -1;
-    if (camera.position.z < 9) direction = 1;
+    if (camera.position.z > 10) direction = -1; //jitna jyada utna peeche
+    if (camera.position.z < 9) direction = 1; // jitna kam utna aage
   });
   return null;
 };
