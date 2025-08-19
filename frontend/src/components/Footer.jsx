@@ -8,11 +8,11 @@ const Footer = () => {
                 {/*----------Left Section------------*/}
                 <div>
                     <img className='mb-5 w-[150px] rounded-full' src={assets.logo} alt="logo" />
-                    <p className='w-full text-gray-300 italic font-thin'>Vending Machine is more than just a vending solution it’s a smart, cloud-powered, cashless ecosystem designed for modern lifestyles. By combining real-time inventory, secure payments, and contactless access, we make on-the-go shopping faster, safer, and more convenient than ever.
+                    <p className='w-full text-gray-300 italic font-thin'>E-Vending Machine is more than just a vending solution it’s a smart, cloud-powered, cashless ecosystem designed for modern lifestyles. By combining real-time inventory, secure payments, and contactless access, we make on-the-go shopping faster, safer, and more convenient than ever.
                       <br />
                       Wherever you are campuses, offices, or public spaces our mission is to bring you instant access to everyday essentials with just a scan.
                       <br />
-                      Vending Machine redefining convenience, one scan at a time.
+                      E-Vending Machine redefining convenience, one scan at a time.
                     </p>
                 </div>
 
@@ -62,7 +62,7 @@ const Footer = () => {
                         </ul>
                         <ul>
                             <p className='text-gray-400'>Email</p>
-                            <li>vendingmachine@gmail.com</li>
+                            <li>e.vendingmachine@gmail.com</li>
                         </ul>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@ const Footer = () => {
 
             <div className='md:flex md:gap-3 md:justify-center'>
                 <div>
-                <p className='py-5 text-sm text-center text-gray-400'>Copyright 2025@ Vending Machine - <span className='text-primary italic'>All Right Reserved.</span></p>
+                <p className='py-5 text-sm text-center text-gray-400'>Copyright 2025@ E-Vending Machine - <span className='text-primary italic'>All Right Reserved.</span></p>
                 </div>
             </div>
         </div>
