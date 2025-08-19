@@ -39,6 +39,9 @@ const Working = () => {
                     <p className='font-light text-sm'>As soon as payment is validated, the vending machine automatically dispenses the exact items purchased. Access is tightly controlled — only valid transactions trigger the machine, and the access ends immediately after dispensing. If customers want to shop again, they simply rescan the code to start fresh.</p>
                 </div>
             </div>
+
+            <p className='mt-10 italic font-thin text-center max-w-200'>Fast, reliable, and futuristic — no coins, no queues, no wasted time. With E-Vending Machine, buying your favorite snacks and drinks becomes a modern, effortless experience.</p>
+
         </div>
     )
 }
