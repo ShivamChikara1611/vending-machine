@@ -8,6 +8,8 @@ import logo from './logo.png';
 import menu from './menu.png';
 import close from './close.png';
 import scan from './scan.png';
+import contactless from './contactless.png';
+import cart from './cart.png';
 
 export const assets = {
     main_bg1,
@@ -19,5 +21,7 @@ export const assets = {
     logo,
     menu,
     close,
-    scan
+    scan,
+    contactless,
+    cart
 };
