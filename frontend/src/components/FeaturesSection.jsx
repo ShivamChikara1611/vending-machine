@@ -4,7 +4,7 @@ import { assets } from "../assets/assets.js";
 const FeaturesSection = () => {
     return (
         <div className='flex flex-col justify-center items-center my-8 py-10 px-[2%]'>
-            <h1 className='text-3xl tracking-wider font-thin'>Why Choose E-Vending Machine?</h1>
+            <h1 className='text-3xl tracking-wider font-thin text-center'>Why Choose E-Vending Machine?</h1>
 
             {/* features card */}
             <div className='max-w-[1200px] mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
