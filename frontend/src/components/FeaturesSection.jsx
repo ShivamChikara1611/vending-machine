@@ -3,7 +3,7 @@ import { assets } from "../assets/assets.js";
 
 const FeaturesSection = () => {
     return (
-        <div className='bg-gray-100 flex flex-col justify-center items-center my-8 py-10 px-[2%]'>
+        <div className='flex flex-col justify-center items-center my-8 py-10 px-[2%]'>
             <h1 className='text-3xl tracking-wider font-thin'>Why Choose E-Vending Machine?</h1>
 
             {/* features card */}

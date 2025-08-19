@@ -10,6 +10,7 @@ import close from './close.png';
 import scan from './scan.png';
 import contactless from './contactless.png';
 import cart from './cart.png';
+import arrow from './arrow.png';
 
 export const assets = {
     main_bg1,
@@ -23,5 +24,6 @@ export const assets = {
     close,
     scan,
     contactless,
-    cart
+    cart,
+    arrow
 };

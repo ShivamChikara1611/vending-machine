@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import FeaturesSection from '../components/FeaturesSection';
+import Working from '../components/Working';
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
         <div>
             <Hero />
             <FeaturesSection/>
+            <Working/>
         </div>
     )
 }
