@@ -12,7 +12,7 @@ import ScanVendingMachine from './components/ScanVendingMachine';
 
 const App = () => {
   return (
-      <div className="z-10 pt-20"> {/* pt-20 = 80px */}
+      <div className="z-10 pt-17 xl:pt-20"> {/* pt-20 = 80px */}
         <ToastContainer />
         <Navbar />
         <Routes>

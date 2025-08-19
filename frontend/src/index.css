@@ -5,26 +5,20 @@
     --color-primary: #b30707;
     --color-secondary: #cc3535;
     --color-third: #fa4b4b;
-
-    --grid-cols-auto: repeat(auto-fill, minmax(200px, 1fr));
-
-    @keyframes border-spin {
-        to {
-            transform: rotate(-360deg);
-        }
-    }
-
-    --animate-border-spin: border-spin 7s linear infinite;
 }
 
 * {
     font-family: 'Outfit';
 }
 
-body {
-    /* position: relative; */
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fff7f7;
 }
-body::before {
+
+/* #hero::before {
     content: "";
     position: fixed;
     inset: 0;
@@ -33,17 +27,17 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    pointer-events: none;  
+    pointer-events: none;
 }
-body::after{
+#hero::after{
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     background-color: black;
-    opacity: 0.5;
-    pointer-events: none;  
-}
+    opacity: 0.3;
+    pointer-events: none;
+} */
 
 .active hr {
     @apply block;

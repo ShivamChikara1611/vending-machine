@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import QrCodeScanner from "./QrCodeScanner";
+import { assets } from "../assets/assets.js";
 
 const ScanVendingMachine = () => {
     const [vendingMachineData, setVendingMachineData] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [cart, setCart] = useState([]);
     const [scannerId, setScannerId] = useState(null); // store scanned id
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
     const yen = import.meta.env.VITE_CURRENCY || "¥";
 
     // Fetch vending machine
@@ -140,6 +142,11 @@ const ScanVendingMachine = () => {
         }
     };
 
+    // Cart show/close handle
+    const toggleCart = () => {
+        setIsCartOpen((prev) => !prev);
+    };
+
     // Filter products safely
     const filteredProducts =
         vendingMachineData?.products?.filter((product) =>
@@ -173,9 +180,9 @@ const ScanVendingMachine = () => {
 
     // STEP 3 → Show vending machine UI
     return (
-        <div className="flex justify-between">
+        <div className="flex justify-between relative mt-8">
             {/* Product List */}
-            <div className="flex flex-col justify-center items-center text-gray-200 py-8 w-full">
+            <div className="flex flex-col justify-center items-center text-gray-200 w-full">
                 <h1 className="text-5xl font-bold text-primary">Welcome!</h1>
 
                 <div className="mt-5 flex flex-col justify-center items-center">
@@ -228,9 +235,18 @@ const ScanVendingMachine = () => {
                 </div>
             </div>
 
+            {/* cart show/hide button */}
+            <div className="absolute top-5 right-0">
+                <button onClick={toggleCart} className="bg-primary py-1 px-5 rounded-l-lg text-gray-200 text-lg italic cursor-pointer">Cart</button>
+            </div>
+
             {/* Cart */}
-            <div className="bg-gray-300 min-w-80 p-3 text-primary rounded-l-lg">
-                <h3 className="text-xl text-center mb-3">Products in your cart!</h3>
+            <div className={`backdrop-blur-2xl bg-white/50 pt-10 overflow-y-scroll absolute right-0 h-full w-1/2 lg:w-1/3 p-3 text-primary rounded-l-lg ${isCartOpen ? 'block' : 'hidden'}`}>
+
+            <button onClick={toggleCart} className="cursor-pointer h-5 w-5 absolute top-3 right-3">
+                <img src={assets.close} alt="close" />
+            </button>
+
                 {cart.length > 0 ? (
                     <>
                         {cart.map((item, index) => (
