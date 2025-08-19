@@ -7,14 +7,14 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className='fixed top-0 left-1/2 -translate-x-1/2 w-full z-30 flex items-center justify-between px-[5%] xl:px-0 xl:justify-around text-sm py-2 text-primary xl:rounded-full xl:my-3 xl:w-fit xl:min-w-[800px] backdrop-blur-sm bg-white/50 shadow-lg'>
+    <div className='fixed top-0 left-1/2 -translate-x-1/2 w-full z-30 flex items-center justify-between px-[5%] xl:px-2.5 xl:justify-between text-sm py-2 text-primary xl:rounded-full xl:my-3 xl:w-fit xl:min-w-[800px] backdrop-blur-sm bg-zinc-800 shadow-lg'>
       <img
         onClick={() => navigate('/')}
         className='h-[50px] w-[50px] rounded-full cursor-pointer'
         src={assets.logo}
         alt='nav-logo'
       />
-      <ul className='hidden xl:flex items-start gap-5 font-medium tracking-widest'>
+      <ul className='hidden xl:flex items-start gap-5 font-medium tracking-widest xl:mr-20'>
         <NavLink to='/'>
         <li className='py-1'>HOME</li>
         <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
