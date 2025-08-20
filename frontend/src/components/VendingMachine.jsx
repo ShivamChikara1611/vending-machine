@@ -145,7 +145,7 @@ const VendingMachine = () => {
         <div className="relative h-[88.5vh] py-8">
 
             {/* Product List */}
-            <div className="flex flex-col justify-center items-center w-full relative">
+            <div className="flex flex-col justify-center items-center w-full h-full">
 
                 {/* vending machine name heading */}
                 <h1 className="text-3xl tracking-wider font-thin text-center">
@@ -158,11 +158,11 @@ const VendingMachine = () => {
                     placeholder="Search by product name"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="bg-gray-200 my-4 w-full max-w-[300px] p-2 rounded"
+                    className="bg-gray-200 mt-4 w-full max-w-[300px] p-2 rounded"
                 />
 
                 {/* grid container */}
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 gap-y-6 p-5 bg-zinc-700 max-h-[65vh] overflow-y-scroll">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 p-5 bg-zinc-700 overflow-y-scroll mt-4 mx-1">
                     {filteredProducts.length > 0 ? (
                         filteredProducts.map((item, index) => (
                             <div
@@ -177,7 +177,7 @@ const VendingMachine = () => {
                                         {yen}
                                         {item.price}
                                     </p>
-                                        <button
+                                    <button
                                         onClick={() => addToCart(item)}
                                         className="bg-primary text-gray-200 text-xs cursor-pointer rounded-full px-2 py-0.5 font-thin"
                                     >
@@ -202,22 +202,27 @@ const VendingMachine = () => {
             </div>
 
             {/* cart show/hide button */}
-            <div className="absolute top-5 right-0">
-                <button onClick={toggleCart} className="bg-primary py-1 px-5 rounded-l-lg text-gray-200 text-lg italic cursor-pointer">Cart</button>
+            <div className="absolute top-3 right-3 bg-zinc-600 rounded-full flex justify-center items-center p-2 z-40 cursor-pointer">
+                <button onClick={toggleCart} className="cursor-pointer w-6 rounded-full">{isCartOpen ? <img src={assets.close} alt="close" /> : <img className="invert" src={assets.cart} alt="cart" />}
+                    {cart.length > 0 && !isCartOpen && (
+                        <sup className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full px-1">{cart.length}</sup>)}
+                </button>
             </div>
 
             {/* Cart */}
-            <Cart
-                cart={cart}
-                isCartOpen={isCartOpen}
-                toggleCart={toggleCart}
-                decrementFromCart={decrementFromCart}
-                addToCart={addToCart}
-                cancelPayment={cancelPayment}
-                checkout={checkout}
-                yen={yen}
-                assets={assets}
-            />
+            <div className="absolute bottom-0 right-0 h-full z-[30] w-full md:w-1/2 lg:w-1/4">
+                <Cart
+                    cart={cart}
+                    isCartOpen={isCartOpen}
+                    toggleCart={toggleCart}
+                    decrementFromCart={decrementFromCart}
+                    addToCart={addToCart}
+                    cancelPayment={cancelPayment}
+                    checkout={checkout}
+                    yen={yen}
+                    assets={assets}
+                />
+            </div>
         </div>
     );
 };

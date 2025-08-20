@@ -3,13 +3,11 @@ import React from "react";
 const Cart = ({
     cart,
     isCartOpen,
-    toggleCart,
     decrementFromCart,
     addToCart,
     cancelPayment,
     checkout,
-    yen,
-    assets,
+    yen
 }) => {
     const totalAmount = cart.reduce(
         (sum, item) => sum + item.price * item.quantity,
@@ -17,12 +15,9 @@ const Cart = ({
     );
 
     return (
-        <div className={`backdrop-blur-2xl bg-white/50 pt-10 overflow-y-scroll absolute right-0 h-full w-1/2 lg:w-1/3 p-3 text-primary rounded-l-lg ${isCartOpen ? 'block' : 'hidden'}`}>
-            <button onClick={toggleCart} className="cursor-pointer h-5 w-5 absolute top-3 right-3">
-                <img src={assets.close} alt="close" />
-            </button>
+        <div className={`backdrop-blur-2xl bg-zinc-800 overflow-y-scroll h-full p-3 text-primary pt-10 ${isCartOpen ? 'block' : 'hidden'}`}>
             {cart.length > 0 ? (
-                <>
+                <div>
                     {cart.map((item, index) => (
                         <div
                             key={index}
@@ -51,6 +46,7 @@ const Cart = ({
                             </div>
                         </div>
                     ))}
+
                     {/* Total & Payment Buttons */}
                     <div className="mt-4">
                         <p className="text-lg font-semibold text-center mb-3">
@@ -71,7 +67,7 @@ const Cart = ({
                             </button>
                         </div>
                     </div>
-                </>
+                </div>
             ) : (
                 <p className="italic text-gray-600 flex justify-center items-center h-120">Cart is empty</p>
             )}
