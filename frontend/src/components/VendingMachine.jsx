@@ -142,61 +142,70 @@ const VendingMachine = () => {
     }
 
     return (
-        <div className="flex justify-between relative mt-8">
+        <div className="relative h-[88.5vh] py-8">
+
             {/* Product List */}
-            <div className="flex flex-col justify-center items-center text-gray-200 w-full">
-                <h1 className="text-5xl font-bold text-primary">Welcome!</h1>
-                <div className="mt-5 flex flex-col justify-center items-center">
-                    <h3 className="text-2xl font-semibold text-gray-200 mb-1">
-                        {vendingMachineData.location}'s Vending Machine
-                    </h3>
-                    <p className="text-gray-300 text-lg italic">
-                        Please choose your item below.
-                    </p>
-                    <input
-                        type="text"
-                        placeholder="Search by name"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="border border-primary bg-primary bg-opacity-20 rounded px-2 py-1.5 text-gray-300 my-5 w-full md:w-80"
-                    />
-                    <div className="max-h-[85vh] overflow-y-scroll">
-                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6 bg-white/50 p-5 rounded-md backdrop-blur-lg scrollbar-hide">
-                            {filteredProducts.length > 0 ? (
-                                filteredProducts.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        className="bg-primary rounded-sm hover:-translate-y-1 transition-all duration-300 max-w-60 p-3 group"
-                                    >
-                                        <p className="text-gray-200 text-lg font-medium">
-                                            {item.product_name}
-                                        </p>
-                                        <p className="text-gray-300 text-sm">
-                                            {yen}
-                                            {item.price}
-                                        </p>
-                                        <p className="text-gray-200 text-sm">
-                                            Only {item.stock} left
-                                        </p>
+            <div className="flex flex-col justify-center items-center w-full relative">
+
+                {/* vending machine name heading */}
+                <h1 className="text-3xl tracking-wider font-thin text-center">
+                    Welcome to <span className="text-primary font-normal">{vendingMachineData.location}'s</span> Vending Machine
+                </h1>
+
+                {/* search button */}
+                <input
+                    type="text"
+                    placeholder="Search by product name"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="bg-gray-200 my-4 w-full max-w-[300px] p-2 rounded"
+                />
+
+                {/* grid container */}
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 gap-y-6 p-5 bg-zinc-700 max-h-[65vh] overflow-y-scroll">
+                    {filteredProducts.length > 0 ? (
+                        filteredProducts.map((item, index) => (
+                            <div
+                                key={index}
+                                className="bg-white rounded-sm max-w-60 p-2 group relative"
+                            >
+                                <p className="text-primary tracking-wider">
+                                    {item.product_name}
+                                </p>
+                                <div className="flex gap-2 items-center mt-0.5">
+                                    <p className="text-gray-500 text-sm tracking-wider">
+                                        {yen}
+                                        {item.price}
+                                    </p>
                                         <button
-                                            onClick={() => addToCart(item)}
-                                            className="mt-2 bg-gray-200 text-primary rounded px-5 py-1 text-sm cursor-pointer"
-                                        >
-                                            Add
-                                        </button>
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-gray-400 italic">No products found.</p>
-                            )}
-                        </div>
-                    </div>
+                                        onClick={() => addToCart(item)}
+                                        className="bg-primary text-gray-200 text-xs cursor-pointer rounded-full px-2 py-0.5 font-thin"
+                                    >
+                                        Add
+                                    </button>
+
+                                </div>
+
+
+                                <div className="absolute w-[30px] h-[30px] bottom-0 right-0 bg-primary rounded-t-full rounded-l-full p-1 flex justify-center items-center">
+                                    <p className="text-gray-200 text-sm">
+                                        {item.stock}
+                                    </p>
+                                </div>
+
+                            </div>
+                        ))
+                    ) : (
+                        <p className="text-gray-400 italic">No products found.</p>
+                    )}
                 </div>
             </div>
+
             {/* cart show/hide button */}
             <div className="absolute top-5 right-0">
                 <button onClick={toggleCart} className="bg-primary py-1 px-5 rounded-l-lg text-gray-200 text-lg italic cursor-pointer">Cart</button>
             </div>
+
             {/* Cart */}
             <Cart
                 cart={cart}

@@ -44,7 +44,7 @@ body{
 }
 
 ::-webkit-scrollbar {
-    @apply w-2 h-0;
+    @apply w-1 h-0;
     background-color: transparent;
 }
 
