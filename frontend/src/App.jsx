@@ -8,18 +8,20 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
-import ScanVendingMachine from './components/ScanVendingMachine';
+import QrCodeScanner from './components/QrCodeScanner';
+import VendingMachine from './components/VendingMachine';
 
 const App = () => {
   return (
-      <div className="z-10 pt-17 xl:pt-20"> {/* pt-20 = 80px */}
+      <div className="z-10 pt-17 xl:pt-20">
         <ToastContainer />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/scan" element={<ScanVendingMachine />} />
+          <Route path="/scan" element={<QrCodeScanner />} />
+          <Route path="/vending-machine/:id" element={<VendingMachine />} />
         </Routes>
         <Footer />
     </div>
