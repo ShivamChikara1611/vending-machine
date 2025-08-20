@@ -58,7 +58,7 @@ const QrCodeScanner = () => {
             </h1>
 
             {/* qr code and upload image container */}
-            <div className="flex flex-col justify-center items-center gap-5">
+            <div className="flex flex-col justify-center items-center gap-5 mx-3">
                 <video ref={ref} className="w-[400px] p-1 rounded-xl bg-primary" />
                 <div className="bg-white w-full flex flex-col justify-center items-center rounded-b-xl">
                     <label
