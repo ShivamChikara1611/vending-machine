@@ -12,8 +12,7 @@ const VendingMachine = () => {
     const [cart, setCart] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
 
-    // const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
-    const backendUrl = 'http://localhost:5000';
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
     const yen = import.meta.env.VITE_CURRENCY || "¥";
 
     // Fetch vending machine info

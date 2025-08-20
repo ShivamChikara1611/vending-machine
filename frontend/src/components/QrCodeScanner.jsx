@@ -53,14 +53,17 @@ const QrCodeScanner = () => {
     };
 
     return (
-        <div className="h-[88.5vh] flex flex-col justify-center items-center">
-            <h1 className="text-3xl text-primary mb-4">Scan the Vending Machine QR</h1>
-            <div className="flex flex-col justify-center items-center gap-4">
-                <video ref={ref} className="w-[300px] h-[300px]" />
-                <div>
+        <div className="h-[88.5vh] flex flex-col justify-evenly items-center">
+            <h1 className="text-3xl tracking-wider font-thin text-center">Scan the QR Code!
+            </h1>
+
+            {/* qr code and upload image container */}
+            <div className="flex flex-col justify-center items-center gap-5">
+                <video ref={ref} className="w-[400px] p-1 rounded-xl bg-primary" />
+                <div className="bg-white w-full flex flex-col justify-center items-center rounded-b-xl">
                     <label
                         htmlFor="qr-upload"
-                        className="bg-primary text-white px-4 py-2 rounded cursor-pointer"
+                        className="bg-primary w-full text-center text-white py-3 cursor-pointer tracking-wider font-thin text-lg"
                     >
                         Upload QR Image
                     </label>
