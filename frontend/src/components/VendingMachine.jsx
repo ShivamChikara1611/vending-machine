@@ -145,7 +145,7 @@ const VendingMachine = () => {
         <div className="relative h-[88.5vh] py-8">
 
             {/* Product List */}
-            <div className="flex flex-col justify-center items-center w-full h-full">
+            <div className="flex flex-col items-center w-full h-full">
 
                 {/* vending machine name heading */}
                 <h1 className="text-3xl tracking-wider font-thin text-center">
